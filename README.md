@@ -2,6 +2,15 @@
   Facebook API
 </h1>
 
+## Installation
+
+```bash
+$ npm install
+$ npm prisma generate
+$ npm prisma migrate dev
+```
+
+
 ## API Routes
 
 ## `/api/v1/authentication`
