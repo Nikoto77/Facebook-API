@@ -1,11 +1,10 @@
-
 import jwt from 'jsonwebtoken';
 
-const jwtMiddleware = (request, response, next) => {
+const jwtMiddleware = async (request, response, next) => {
   const { authorization: token } = request.headers;
   
   try {
-    const payload = jwt.verify(token, 'toto');
+    const payload = jwt.verify(token, 'SECRET');
     request.user = payload;
     next();
   } catch (error) {

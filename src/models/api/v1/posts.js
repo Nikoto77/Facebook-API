@@ -21,13 +21,14 @@ export async function createPostDto(message,authorId) {
   })
 }
 
-export async function updatePostDto(id, message){
+export async function updatePostDto(id, message, updatedAt){
  return prisma.post.update({
    where:{
     id,
    },
    data:{
     message,
+    updatedAt,
    },
  });
 };
@@ -43,10 +44,10 @@ export async function returnListPost(message,authorId){
  }
 
 
-export async function deletePost(authorId){
+export async function deletePost(userId){
  return prisma.post.delete({
     where:{
-     authorId        
+     authorId : userId        
      }
   })
 }

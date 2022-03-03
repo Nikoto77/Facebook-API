@@ -12,6 +12,6 @@ export async function createUser(request, response){
 export async function loginUser(request, response){
  const body= request.body;
  const user = await UserModel.LoginDto(body.email,body.password)
- const token = jwt.sign({ email: user.email }, 'Toto')
+ const token = jwt.sign({ email: user.email }, 'SECRET')
  response.status(200).json({ user, token });
 }
