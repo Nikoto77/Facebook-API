@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient()
 
-export  async function updateProfile(firstName, lastName, userId) {
+/* export  async function updateProfile(firstName, lastName, userId) {
  return prisma.profile.upsert({
   where: {
          userId: userId,
@@ -19,13 +19,13 @@ export  async function updateProfile(firstName, lastName, userId) {
           }
         } 
     })
- }
+ } */
 
-export async function returnProfile(userId){
-    return prisma.profile.findFirst(
+export async function getProfile(id){
+    return prisma.profile.findUnique(
         {
             where: {
-                userId
+                userId: id
             }
 
         }
@@ -40,3 +40,15 @@ export async function deleteProfile(userId){
  })
 }
 
+
+export async function updateProfile(id, firstName, lastName){
+    return prisma.profile.update({
+        where:{
+            userId: id,
+        },
+        data:{
+            firstName: firstName,
+            lastName: lastName
+        }
+    })
+  }

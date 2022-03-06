@@ -2,14 +2,14 @@ import * as PostModel from "../../../models/api/v1/posts"
 
 export async function returnPost(request, response){
  const id= request.params.id;
- const post=await PostModel.returnPost(id)
+ const post=await PostModel.returnPost(Number(id))
  response.status(200).json({post});
    }
  
 export async function updatePost(request, response){
  const body= request.body;
  const id= request.params.id;
- const post= await PostModel.updatePostDto(body.message,id)
+ const post= await PostModel.updatePostDto(Number(id),body.message)
  response.status(200).json(post);
 }   
 
@@ -34,7 +34,7 @@ export async function returnListPost(request, response){
 
 export async function deletePost(request, response){
  const id= request.params.id;
- const deletePost=await PostModel.deletePost(id)
+ const deletePost=await PostModel.deletePost(Number(id))
  response.status(200).json({deletePost});
 }
    

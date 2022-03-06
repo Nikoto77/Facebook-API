@@ -2,10 +2,10 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient()
 
-export async function returnPost(authorId){
+export async function returnPost(id){
   return prisma.post.findFirst({
     where: {
-      authorId,
+      id,
     },
   })
 }
@@ -21,14 +21,13 @@ export async function createPostDto(message,authorId) {
   })
 }
 
-export async function updatePostDto(id, message, updatedAt){
+export async function updatePostDto(id, message){
  return prisma.post.update({
    where:{
     id,
    },
    data:{
     message,
-    updatedAt,
    },
  });
 };
@@ -44,10 +43,10 @@ export async function returnListPost(message,authorId){
  }
 
 
-export async function deletePost(userId){
+export async function deletePost(id){
  return prisma.post.delete({
     where:{
-     authorId : userId        
+     id        
      }
   })
 }
