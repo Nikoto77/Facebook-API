@@ -14,7 +14,7 @@ export async function loginUser(request, response){
   if (!result) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
-    console.log(result);
-    const token=jwt.sign({id:result.id}, 'SECRET')
-    response.status(201).json({result, token});
+ console.log(result);
+ const token=jwt.sign({id:result.id}, 'SECRET')
+ response.status(201).json({result, token});
 }

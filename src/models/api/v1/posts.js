@@ -31,6 +31,7 @@ export async function updatePostDto(id, message){
    },
  });
 };
+
 export async function returnListUserPost(authorId){
  return prisma.post.findMany({
     where: {
@@ -38,10 +39,10 @@ export async function returnListUserPost(authorId){
      }
     })
 }
+
 export async function returnListPost(message,authorId){
  return prisma.post.findMany()
  }
-
 
 export async function deletePost(id){
  return prisma.post.delete({

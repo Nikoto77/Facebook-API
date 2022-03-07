@@ -11,26 +11,26 @@ export const findById = ({ id }) =>
 
 
 
-  export async function LoginDto({email,password}){
+export async function LoginDto({email,password}){
     return prisma.user.findFirst({
-        where:{
-            email,
-            password,
-        }
-    })
+     where:{
+       email,
+       password,
+      }
+   })
 }
 
 export async function registerDto(email,password){
   return prisma.user.create({
-      data:{
-          email,
-          password,
-          Profile:{
-              create:{
-                  firstName: '',
-                  lastName: ''
-              }
-         }
+   data:{
+     email,
+     password,
+   Profile:{
+     create:{
+       firstName: '',
+       lastName: ''
       }
-  })
+    }
+   }
+ })
 }

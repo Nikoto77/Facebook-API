@@ -4,22 +4,18 @@ import * as UserModel from '../models/api/v1/users';
 import { request } from 'express';
 
 const jwtMiddleware = ({ secret }) =>
-  async ({ headers: { authorization: token } }, _response, next) => {
-    try {
+ async ({ headers: { authorization: token } }, _response, next) => {
+  try {
       const { id } = jwt.verify(token, 'SECRET');
-     
-      const user = await UserModel.findById({ id });
-    
+      const user = await UserModel.findById({ id });    
       if (!user) {
         return next(new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED));
       }
-
       request.user = user;
-
       next();
-    } catch(error) {
-      next(new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED));
+    } 
+    catch(error) {
+     next(new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED));
     }
-  }
-
-  export default jwtMiddleware;
+ }
+ export default jwtMiddleware;
